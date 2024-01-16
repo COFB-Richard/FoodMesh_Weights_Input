@@ -1,0 +1,174 @@
+.radio-group {
+    display: flex;
+}
+
+.radio-group input[type=radio] {
+    display: none;
+}
+
+.radio-group label {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.goodSubmitFlash {
+  background: white;
+  animation: fadeFromGreen 3s ;
+}
+
+.badSubmitFlash {
+  background: white;
+  animation: fadeFromRed 3s ;
+}
+
+.editModeColor {
+  background: lightyellow;
+}
+
+@keyframes fadeFromRed {
+  from { background-color: red;}
+  to   { background-color: white;}  
+}
+
+@keyframes fadeFromGreen {
+  from { background-color: lightgreen;}
+  to   { background-color: white;}
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+p {
+  margin: 2px 0px;
+}
+
+h3 {
+  margin: 2px 0px;
+}
+
+button {
+  margin-top: 5px;
+}
+
+.radio-group input[type=radio]:checked+div label {
+    background-color: #bbb;
+}
+
+.mainLabel {
+  align-items: center;
+  display: flex;
+  padding-top:2px;
+  padding-bottom: 4px;
+  width: fit-content;
+}
+
+input[type=checkbox] {
+  width:20px;
+  height:20px;
+  margin: 0px;
+  margin-left: 3px;
+  flex: none;
+}
+
+#foodType {
+    border:none;
+    padding:0;
+    margin:0;
+    flex-flow: wrap;
+}
+
+legend {
+    padding:0;
+}
+
+.foodTypeAndNumber p {
+  text-align: center;
+  margin: 0;
+}
+
+.optionsLabel {
+  display: flex;
+  align-items: center;
+}
+
+/* #region autocomplete */
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    width: fit-content;
+    cursor: auto;
+  }
+
+  .autocomplete > label {
+    font-family: monospace;
+    font-weight: bold;
+    text-align-last: right;
+    margin-right: 3px;
+    min-width: 60px;
+  }
+  
+  .autocomplete-items {
+    font-family: Helvetica;
+    text-align: left;
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+  }
+  
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+  
+  .removeRowButton, .editRowButton {
+    margin: 0px;
+  }
+
+  .autocompleteInputBox {
+  }
+  
+  /* #endrgion */
+
+  table {
+    margin-top: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th {
+    border: 1px solid black;
+    padding: 3px;
+  }
+  
+  td {
+    border: 1px solid black;
+    padding: 3px;
+    text-align: center;
+  }
+  

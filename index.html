@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food Weights</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <!-- Textarea and button -->
+    <button id="toggle-csv">Options Toggle</button>    
+    <div id="csvStoreDataDiv" style="display: none;">
+      <br>
+      <button type="button" id="scaleConnect">Connect to scale</button><br>
+      <label class="optionsLabel">Keep "Bin Count" between submits: <input type="checkbox" name="" id="keepBinCount">  </label>
+      <label class="optionsLabel">Keep "Food Types" between submits: <input type="checkbox" name="" id="keepLastFoodType">  </label>
+      <label class="optionsLabel">Validate Store: <input type="checkbox" name="" id="validateStore">  </label>      
+      <div style="margin-top: 5px;">
+        <label>Bin Weight:</label>
+        <input type="number" id="binWeight" name="binWeight">
+      </div>   
+      <label>Stores list</label>
+      <textarea id="csv-data" style="display: inherit;"></textarea>
+  
+      <label>Stores to FoodMesh code list</label>
+      <textarea id="storeToFoodMeshCode" style="display: inherit;"></textarea>
+      
+      <h3>Instructions</h3> 
+      <p>
+        Number keys can be used to select food type. <br>
+        Bin count can be incremented and decremented by the (q or -) and (w or +) keys respectively.<br>
+        Press the "/" key to toggle compost.<br>
+        Tab and (Shift + Tab) to move down an up the input boxes <br> 
+        Space Bar can be used to toggle the selected check box or press buttons<br>
+        Press Enter to submit. <br>
+        <br>
+        Removing a row will add it's values to the input fields.<br>
+        <br>
+        Bin weight is not subtracted at any point yet 2023-12-06
+      </p>
+    </div>
+    <hr>
+    <!-- Form -->
+    <form id="weightsForm">
+        <label class="mainLabel" for="dateArrived">Date Arrived:</label>
+        <div class="sourceBox">
+          <input type="date" id="dateArrived" name="dateArrived">
+        </div>
+        <label class="mainLabel" for="storeName">Store Name:</label>
+        <div class="sourceBox autocomplete">
+          <input autocomplete="off" type="text" id="storeName" name="storeName"
+                class="autocompleteInputBox">
+        </div>
+        <label class="mainLabel" for="weight">Weight:</label>
+        <div style="display: flex; align-items: center;">
+          <div class="sourceBox">
+            <input type="number" id="weight" name="weight" step="1">
+          </div>
+          <label style="padding-left: 5px; padding-top: 0px; padding-bottom: 0px;" class="mainLabel">Manual Weight:<input id="manualWeight" tabindex="-1" type="checkbox"></label>
+        </div>
+        
+        <label class="mainLabel">Bin Count</label>
+        <input type="number" id="binCount" name="binCount" min="0" step="1">
+        <!-- Css selector for :checked+div label, when modifying html structure you
+          will need to update the selector for showing the label that is currently selected -->
+        <fieldset id="foodType" class="radio-group">
+          <legend>Food Types:</legend><br>
+          <input type="radio" id="Produce" name="foodType" value="Produce">
+          <div class="foodTypeAndNumber"><p>1</p><label for="Produce">Produce</label></div>
+          
+          <input type="radio" id="Dairy" name="foodType" value="Dairy">
+          <div class="foodTypeAndNumber"><p>2</p><label for="Dairy">Dairy</label></div>
+          
+          <input type="radio" id="Bread" name="foodType" value="Bread">
+          <div class="foodTypeAndNumber"><p>3</p><label for="Bread">Bread</label></div>
+      
+          <input type="radio" id="Meat" name="foodType" value="Meat">
+          <div class="foodTypeAndNumber"><p>4</p><label for="Meat">Meat</label></div>
+      
+          <input type="radio" id="Deli" name="foodType" value="Deli">
+          <div class="foodTypeAndNumber"><p>5</p><label for="Deli">Deli</label></div>
+      
+          <input type="radio" id="Dry" name="foodType" value="Dry">
+          <div class="foodTypeAndNumber"><p>6</p><label for="Dry">Dry</label></div> 
+          
+          <input type="radio" id="NotFood" name="foodType" value="NotFood">
+          <div class="foodTypeAndNumber"><p>7</p><label for="NotFood">NotFood</label></div> 
+        </fieldset>
+        <label class="mainLabel" for="compost">Compost?: <input type="checkbox" id="compost" name="compost"></label>
+        <input id="submitButton" type="submit" value="Submit">
+      </form> 
+      <hr>
+      <!-- Table -->
+      <button id="saveTable" type="button">Download Table Csv</button>
+      <button id="loadTable" type="button">Reload Table</button>
+      <button id="groupTableData" type="button">Group Table Data</button>
+      <br>
+      <div style="margin-top: 5px;">
+        <label for="backupName"> Table Backup Name: <input type="text" id="backupName"> </label>      
+      </div>      
+      <button id="loadTableBackup" type="button">Load table backup</button>
+      <button id="saveTableBackup" type="button">Save table backup </button>
+      <button id="clearTable" type="button">Clear Table</button>
+      <table id="weightsTable">
+        <thead>
+          <tr id="tableHeaders"></tr>
+        </thead>
+        <!-- Table data will go here -->
+        <tbody>
+        </tbody>
+      </table>
+      <script src="scripts/main.js"></script>
+  </body>
+</html>
